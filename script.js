@@ -17,27 +17,32 @@ function generateComputerChoice() {
     }
 }
 
-function playGame(playerChoice) {
-    const computerChoice = generateComputerChoice(); 
+function checkResults(player, computer){
     let result = "";
-
-    console.log(`Player: ${playerChoice}`);
-    console.log(`Computer: ${computerChoice}`);
-
-    if (playerChoice === computerChoice) {
+    
+    if (player === computer) {
         result = "It's a Tie!";
         statusText.innerHTML = result;
+        document.querySelector(".status").style.backgroundColor = "yellow";
     } else if (
-        (playerChoice === "rock" && computerChoice === "scissors") ||
-        (playerChoice === "paper" && computerChoice === "rock") ||
-        (playerChoice === "scissors" && computerChoice === "paper")
+        (player === "rock" && computer === "scissors") ||
+        (player === "paper" && computer === "rock") ||
+        (player === "scissors" && computer === "paper")
     ) {
         result = "You Win! 🎉";
         statusText.innerHTML = result;
+        document.querySelector(".status").style.backgroundColor = "green";
     } else {
         result = "You Lose. 😢";
         statusText.innerHTML = result;
+        document.querySelector(".status").style.backgroundColor = "red";
     }
+}
+
+function playGame(playerChoice) {
+    const computerChoice = generateComputerChoice(); 
+
+    checkResults(playerChoice, computerChoice);
 
     if(computerChoice === "rock"){
         computerResult.innerHTML = `<img src="assets/rock.jpg" alt="rock">`
