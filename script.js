@@ -10,6 +10,9 @@ const winScore = document.getElementById("winScore");
 const loseScore = document.getElementById("loseScore");
 const drawScore = document.getElementById("drawScore");
 
+const resetButton = document.getElementById("resetButton");
+const resultsSection = document.getElementById("results-section");
+
 let wins = 0;
 let loses = 0;
 let draw = 0;
@@ -34,7 +37,6 @@ function checkResults(player, computer){
         document.querySelector(".status").style.backgroundColor = "yellow";
         draw++;
         drawScore.textContent = draw;
-        console.log(`Draw: ${draw}`);
     } else if (
         (player === "rock" && computer === "scissors") ||
         (player === "paper" && computer === "rock") ||
@@ -45,18 +47,19 @@ function checkResults(player, computer){
         document.querySelector(".status").style.backgroundColor = "green";
         wins++
         winScore.textContent = wins;
-        console.log(`Wins: ${wins}`);
     } else {
         result = "You Lose. 😢";
         statusText.innerHTML = result;
         document.querySelector(".status").style.backgroundColor = "red";
         loses++;
         loseScore.textContent = loses;
-        console.log(`Loses ${loses}`);
     }
 }
 
 function playGame(playerChoice) {
+
+    resultsSection.style.display = "flex";
+
     const computerChoice = generateComputerChoice(); 
 
     checkResults(playerChoice, computerChoice);
@@ -69,7 +72,7 @@ function playGame(playerChoice) {
         computerResult.innerHTML = `<img src="assets/scissors.jpg" alt="scissors">`
     }
 
-     if (playerChoice === "rock") {
+    if (playerChoice === "rock") {
         playerResult.innerHTML = `<img src="assets/rock.jpg" alt="rock">`;
     } else if (playerChoice === "paper") {
         playerResult.innerHTML = `<img src="assets/paper.jpg" alt="paper">`;
@@ -78,8 +81,22 @@ function playGame(playerChoice) {
     }
 }
 
+function reset(){
+    wins = 0;
+    loses = 0;
+    draw = 0;
+
+    winScore.textContent = wins;
+    loseScore.textContent = loses;
+    drawScore.textContent = draw;
+
+    resultsSection.style.display = "none";
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     rock.addEventListener("click", () => playGame("rock"));
     paper.addEventListener("click", () => playGame("paper"));
     scissors.addEventListener("click", () => playGame("scissors"));
+
+    resetButton.addEventListener("click", () => reset());
 });
