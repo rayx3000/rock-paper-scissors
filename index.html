@@ -26,7 +26,7 @@
             </div>
         </section>
         <section id="choice-section">
-            <h2>Choose One Pick</h2>
+            <h2 class="section-header">Choose One Pick</h2>
             <div class="choice-container">
                 <div class="choice" id="rock">
                     <img src="assets/rock.jpg" alt="rock">
@@ -41,19 +41,23 @@
         </section>
         <button class="reset-button" id="resetButton">Reset</button>
         <section id="results-section">
-            <h2>Results</h2>
+            <h2 class="section-header">Results</h2>
             <div class="results-container">
                 <div>
                     <h3>Player:</h3>
-                    <div class="result" id="playerResult"></div>
+                    <div class="result" id="playerResult">
+                        `<img src="assets/paper.jpg" alt="paper">`
+                    </div>
                 </div>
                 <div>
                     <h3>Computer:</h3>
-                    <div class="result" id="computerResult"></div>
+                    <div class="result" id="computerResult">
+                        `<img src="assets/rock.jpg" alt="rock">`
+                    </div>
                 </div>
             </div>
             <div class="status">
-                <h1 id="statusText"></h1>
+                <h1 id="statusText">You Win! 🎉</h1>
             </div>
         </section>
     </main>
